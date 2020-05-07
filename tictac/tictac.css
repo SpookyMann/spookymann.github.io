@@ -1,0 +1,96 @@
+/*
+#f7f7f7 - snow white
+#833ab4 - zone purple
+#fd1d1d - sunset red
+#fcb045 - golden yellow
+#100303 - emo black
+https://colorhunt.co/palette/180404
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Megrim&display=swap');
+
+.box {
+    height: 175px;
+    width: 175px;
+    background-color: #f7f7f7;
+    display: inline-block;
+    margin: 10px;
+    vertical-align: top;
+    text-align: center;
+    line-height: 175px;
+    font-size: 100px;
+    font-weight: 900;
+}
+
+.titletext {
+  text-align: center;
+  color: #100303;
+}
+
+h1.titletext {font-size: 3em}
+p.titletext {font-size: 2em;}
+
+.hidden {
+  display: none;
+}
+
+.unhidden {
+  display: block;
+}
+
+#lightbox {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+}
+
+#x {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  z-index: 2;
+}
+
+#positionMessage {
+  position: absolute;
+  top: 100px;
+  left: 0px;
+  width: 100%;
+}
+
+#boundaryMessage {
+  text-align: center;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: 600px;
+  height: 200px;
+  background-color: #f7f7f7;
+  z-index: 1;
+  padding: 30px;
+  border: 1px solid transparent;
+  border-image: linear-gradient(135deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+  border-image-slice: 1;
+  border-width: 10px;
+}
+
+#main {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  height: 585px;
+  width: 595px;
+  background: rgb(131,58,180);
+  background: linear-gradient(135deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+  padding: 10px;
+}
+
+body {
+  font-family: 'Megrim', Arial, Verdana, sans-serif;
+  background-color: #f7f7f7;
+}
