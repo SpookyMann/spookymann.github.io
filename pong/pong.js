@@ -132,7 +132,6 @@ window.setInterval (function show() {
       startBall();
       s2 += 1;
       document.getElementById("score2").innerHTML = s2;
-      console.log(s1);
     } // else
   } // if
 
@@ -146,7 +145,6 @@ window.setInterval (function show() {
       startBall();
       s1 += 1;
       document.getElementById("score1").innerHTML = s1;
-      console.log(s2);
     } // else
   } // if
 
