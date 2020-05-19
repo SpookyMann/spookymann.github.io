@@ -21,26 +21,26 @@
 
 .paddle {
   width: 10px;
-  height: 100px;
+  height: 125px;
   background-color: blue;
 }
 
 #paddle1 {
   position: absolute;
   left: 0px;
-  top: 40vh;
+  top: 35vh;
 }
 
 #paddle2 {
   position: absolute;
   right: 0px;
-  top: 40vh;
+  top: 35vh;
 }
 
 #ball {
   position: absolute;
   left: 50vw;
-  top: 0px;
+  top: 50vh;
   width: 25px;
   height: 25px;
   background-color: red;
