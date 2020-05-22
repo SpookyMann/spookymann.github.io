@@ -22,6 +22,9 @@ var leftPositionOfBall = startLeftPositionOfBall;
 var topSpeedOfBall = 0;
 var leftSpeedOfBall = 0;
 
+var bounce = new sound("sounds/collide.mp3");
+var score = new sound("sounds/score.mp3");
+
 // start ball motion
 window.addEventListener('load', function() {
   startBall();
@@ -67,7 +70,24 @@ document.addEventListener('keyup', function(e) {
 
 });
 
+// object constructor to play sounds
+// https://www.w3schools.com/graphics/game_sound.asp
+function sound(src) {
+  this.sound = document.createElement("audio");
+  this.sound.src = src;
+  this.sound.setAttribute("preload", "auto");
+  this.sound.setAttribute("controls", "none");
+  this.sound.style.display = "none";
+  document.body.appendChild(this.sound);
+  this.play = function(){
+    this.sound.play();
+  }
+  this.stop = function(){
+    this.sound.pause();
+  }
+}
 
+// start the ball movement
 function startBall() {
   let direction = 1;
   topPositionOfBall = startTopPositionOfBall;
@@ -127,9 +147,11 @@ window.setInterval (function show() {
     // if ball hits left paddle, change direction
     if (topPositionOfBall > positionOfPaddle1 && topPositionOfBall < positionOfPaddle1
         + paddleHeight) {
+          bounce.play();
       leftSpeedOfBall *= -1;
     } else {
       startBall();
+      score.play();
       s2 += 1;
       document.getElementById("score2").innerHTML = s2;
     } // else
@@ -140,9 +162,11 @@ window.setInterval (function show() {
     // if ball hits right paddle, change direction
     if (topPositionOfBall > positionOfPaddle2 &&
         topPositionOfBall < positionOfPaddle2 + paddleHeight) {
+          bounce.play();
       leftSpeedOfBall *= -1;
     } else {
       startBall();
+      score.play();
       s1 += 1;
       document.getElementById("score1").innerHTML = s1;
     } // else
