@@ -2,41 +2,48 @@
   <html lang="en">
   <head>
     <meta charset="utf-8">
-
-    <link rel='icon' href='images/favicon.ico' type='image/x-icon'/ >
-    <title>Pong</title>
+    <title>Tic Tac Toe</title>
 
     <!-- include an external style sheet -->
-    <link rel="stylesheet" href="pong.css">
+    <link rel="stylesheet" href="tictac.css">
 
+    <!-- include an external JavaScript file -->
+    <script src="tictac.js"></script>
   </head>
 
   <body>
 
-    <div id="header">
-      <h1 id="title">Pong</h1>
-      <h2 id="left" class="score"><span id="score1">0</span></h2>
-      <h2 id="right" class="score"><span id="score2">0</span></h2>
-    </div>
-
-    <hr>
-
-    <div id="gameBoard">
-
-      <div id="paddle1" class="paddle">
-      </div>
-
-      <hr>
-
-      <div id="ball">
-      </div>
-
-      <div id="paddle2" class="paddle">
-      </div>
+    <h1 class="titletext">Tic Tac Toe</h1>
+    <div id="main">
+          <div id="one" class="box" onclick="playerTakesTurn(this)"></div>
+          <div id="two" class="box" onclick="playerTakesTurn(this)"></div>
+          <div id="three" class="box" onclick="playerTakesTurn(this)"></div>
+          <br>
+          <div id="four" class="box" onclick="playerTakesTurn(this)"></div>
+          <div id="five" class="box" onclick="playerTakesTurn(this)"></div>
+          <div id="six" class="box" onclick="playerTakesTurn(this)"></div>
+          <br>
+          <div id="seven" class="box" onclick="playerTakesTurn(this)"></div>
+          <div id="eight" class="box" onclick="playerTakesTurn(this)"></div>
+          <div id="nine" class="box" onclick="playerTakesTurn(this)"></div>
 
     </div>
 
-    <script src="pong.js"></script>
+    <div id="controls" class="hidden">
+        <button id="newbutton" onclick="newGame()">New Game</button>
+    </div>
+
+
+    <div id="lightbox" class="hidden"></div>
+
+    <div id="positionMessage">
+        <div id="boundaryMessage" class="hidden">
+            <img id="x" src="images/x.png" alt="close" onclick="continueGame()">
+              <h1 class="titletext" id="message">%nbsp;</h1>
+              <p class="titletext" id="message2">%nbsp;</p>
+        </div>
+    </div>
+
   </body>
 
 </html>
