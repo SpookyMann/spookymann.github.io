@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 
-    <link rel='icon' href='images/favicon.ico' type='image/x-icon'/ >
+    <link rel='icon' href='images/favicon.ico' type='image/x-icon'>
     <title>Pong</title>
 
     <!-- include an external style sheet -->
@@ -13,13 +13,20 @@
 
   <body>
 
-    <div id="header">
-      <h1 id="title">Pong</h1>
-      <h2 id="left" class="score"><span id="score1">0</span></h2>
-      <h2 id="right" class="score"><span id="score2">0</span></h2>
+    <div id="controlpanel">
+      <div onclick="pauseGame()" id="pause" class="controls">
+        <hr>
+        <hr>
+      </div>
     </div>
 
-    <hr>
+    <div id="header">
+      <h1 id="timer">99</h1>
+      <h2 id="left" class="score"><span id="score1">0</span><span id=bar1 class="bar"><hr id="sp1"></span></h2>
+      <h2 id="right" class="score"><span id=bar2 class="bar"><hr id="sp2"></span><span id="score2">0</span></h2>
+    </div>
+
+    <hr id="seper">
 
     <div id="gameBoard">
 
@@ -34,6 +41,41 @@
       <div id="paddle2" class="paddle">
       </div>
 
+    </div>
+
+    <!-- lightbox -->
+    <div id="positionTitleM">
+      <div id="titleMenu" class="hidden">
+        <h1 id="title">Pong</h1>
+        <div onclick="startGame()" id="start" class="blink">
+          CLICK TO START
+        </div>
+      </div>
+    </div>
+
+    <div id="positionMenu">
+      <div id="Menu" class="hidden">
+        <h1 id="title">Paused</h1>
+        <div onclick="resumeGame()" id="resume" class="controls">
+          Resume Game
+        </div>
+        <div onclick="newGame()" id="new" class="controls">
+          New Game
+        </div>
+        <div onclick="stopGame()" id="stop" class="controls">
+          End Game
+        </div>
+      </div>
+    </div>
+
+    <div id="lightbox" class="hidden"></div>
+
+    <div id="positionMessage">
+        <div id="boundaryMessage" class="hidden">
+              <h1 class="titletext" id="message">%nbsp;</h1>
+              <h3 class="titletext" id="message2">%nbsp;</h3>
+              <div onclick="continueGame()" id="replay" class="blink">ARE YOU READY FOR A REMATCH?</div>
+        </div>
     </div>
 
     <script src="pong.js"></script>

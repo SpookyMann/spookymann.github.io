@@ -12,7 +12,7 @@ body {
   background-color: #121212;
 }
 
-hr {
+#seper {
   border: 1px solid transparent;
   border-image: linear-gradient(135deg, rgba(208,0,0,1) 0%, rgba(255,149,5,1) 50%,
   rgba(255,205,83,1) 100%);
@@ -23,7 +23,7 @@ hr {
 #gameBoard {
   position: relative;
   width: 100%;
-  height: 83vh;
+  height: 85vh;
 }
 
 #gameBoard hr {
@@ -33,16 +33,24 @@ hr {
   height: 100%;
 }
 
-#title {
-  font-size: 50px;
+#timer {
+  font-size: 40px;
   text-align: center;
+  border: 1px solid transparent;
+  border-image: linear-gradient(135deg, rgba(208,0,0,1) 0%, rgba(255,149,5,1) 50%,
+  rgba(255,205,83,1) 100%);
+  border-image-slice: 1;
+  border-width: 10px;
   background-image: linear-gradient(135deg, rgba(208,0,0,1) 0%, rgba(255,149,5,1) 50%,
   rgba(255,205,83,1) 100%);
-  background-size: 38.5%;
+  background-size: 120%;
   -webkit-background-clip: text;
   -moz-background-clip: text;
   -webkit-text-fill-color: transparent;
   -moz-text-fill-color: transparent;
+  margin-top: 36px;
+  margin: auto;
+  width: 100px;
 }
 
 #header h2 {
@@ -63,6 +71,37 @@ hr {
 #header #right {
   right: 30px;
   color: #ffcd53;
+}
+
+.bar {
+  display: inline-block;
+  width: 100px;
+  margin: auto 10px auto 10px;
+}
+
+.bar hr {
+  margin: 0;
+  height: 15px;
+  border: 0;
+  width: 0px;
+}
+
+#bar1 {
+  border: 3px solid #d00000;
+}
+
+#bar2 {
+  border: 3px solid #ffcd53;
+}
+
+#bar1 hr {
+  background-color: #d00000;
+  float: left;
+}
+
+#bar2 hr {
+  background-color: #ffcd53;
+  float: right;
 }
 
 .paddle {
@@ -87,8 +126,8 @@ hr {
 
 #ball {
   position: absolute;
-  left: 50vw;
-  top: 50vh;
+  left: 48.95vw;
+  top: 40vh;
   width: 25px;
   height: 25px;
   background-color: #FF9505;
@@ -97,6 +136,213 @@ hr {
 
 #header {
   width: 100%;
-  height: 10vh;
+  height: 7vh;
   position: relative;
+}
+
+/**** Control Panel ****/
+#controlpanel {
+  position: relative;
+  text-align: right;
+  top: 10px;
+  right: 10px;
+  height: 4vh;
+  width: 100%;
+}
+
+#pause {
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+  border-radius: 7px;
+  background-color: #121212;
+  width: 40px;
+  height: 40px;
+}
+
+#pause hr{
+  display: inline-block;
+  margin: auto;
+  margin-bottom: 20px;
+  width: 7px;
+  height: 24px;
+  border-radius: 1px;
+  border: 0px;
+  background-image: linear-gradient(105deg, rgba(208,0,0,1) 0%, rgba(255,149,5,1) 50%,
+  rgba(255,205,83,1) 100%);
+}
+
+/**** End Control Panel ****/
+
+/**** Lightbox ****/
+.hidden {
+  display: none;
+}
+
+.unhidden {
+  display: block;
+}
+
+#lightbox {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+
+}
+
+#x {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  z-index: 2;
+}
+
+#positionMessage {
+  position: absolute;
+  top: 100px;
+  left: 0px;
+  width: 100%;
+}
+
+#boundaryMessage {
+  text-align: center;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: 600px;
+  height: 200px;
+  z-index: 1;
+  padding: 30px;
+  border: 1px solid transparent;
+  border-image: linear-gradient(135deg, rgba(208,0,0,1) 0%, rgba(255,149,5,1) 50%,
+  rgba(255,205,83,1) 100%);
+  border-image-slice: 1;
+  border-width: 10px;
+}
+
+#message {
+  background-image: linear-gradient(135deg, rgba(208,0,0,1) 0%, rgba(255,149,5,1) 50%,
+  rgba(255,205,83,1) 100%);
+  background-size: 120%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+
+#message2 {
+  color: white;
+}
+
+#replay {
+  font-size: 20px;
+  background-image: linear-gradient(135deg, rgba(208,0,0,1) 0%, rgba(255,149,5,1) 50%,
+  rgba(255,205,83,1) 100%);
+  background-size: 120%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+
+/**** End Lightbox ****/
+
+/**** Title Menu ****/
+#positionTitleM {
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  top: 300px;
+  left: 0px;
+  width: 100%;
+  z-index: 3;
+}
+
+#titleMenu {
+  text-align: center;
+  border: 1px solid transparent;
+  border-image: linear-gradient(135deg, rgba(208,0,0,1) 0%, rgba(255,149,5,1) 50%,
+  rgba(255,205,83,1) 100%);
+  border-image-slice: 1;
+  border-width: 10px;
+  width: 75%;
+  height: 300px;
+  margin: auto;
+}
+
+#title {
+  font-size: 100px;
+  text-align: center;
+  background-image: linear-gradient(135deg, rgba(208,0,0,1) 0%, rgba(255,149,5,1) 50%,
+  rgba(255,205,83,1) 100%);
+  background-size: 120%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  margin-top: 36px;
+}
+
+#start {
+  color: white;
+  text-shadow: 2px 2px black;
+}
+/**** End Title Menu ****/
+
+/**** Menu ****/
+#positionMenu {
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  top: 100px;
+  left: 0px;
+  width: 100%;
+  z-index: 3;
+}
+
+#Menu {
+  text-align: center;
+  border: 1px solid transparent;
+  border-image: linear-gradient(135deg, rgba(208,0,0,1) 0%, rgba(255,149,5,1) 50%,
+  rgba(255,205,83,1) 100%);
+  border-image-slice: 1;
+  border-width: 10px;
+  width: 400px;
+  height: 600px;
+  margin: auto;
+}
+
+#Menu h1 {
+  font-size: 90px;
+}
+
+.controls {
+  display: block;
+  margin: auto;
+  margin-bottom: 60px;
+  padding: 6px;
+  width: 200px;
+  height: 20px;
+  color: white;
+  text-align: center;
+  border-radius: 7px;
+  font-size: 30px;
+}
+
+#resume {
+  margin-bottom: 90px;
+}
+/**** End Menu ****/
+
+.blink {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% { opacity: 0; }
 }
