@@ -8,12 +8,15 @@ var positionOfPaddle2 = document.getElementById("paddle2").offsetTop;
 var s1 = 0;
 var s2 = 0;
 var specialBar1 = 100;
-var specialBar2 = 0;
+var specialBar2 = 100;
+var pwrUpOn1 = false;
+var pwrUpOn2 = false;
 
-var time = 99;
+var time = 60;
 var timer;
 
 const paddleHeight = document.getElementById("paddle1").offsetHeight;
+var   pwrUpPaddleHeight = 225;
 const paddleWidth = document.getElementById("paddle1").offsetWidth;
 
 const gameboardHeight = document.getElementById("gameBoard").offsetHeight;
@@ -63,26 +66,41 @@ document.addEventListener('keydown', function(e) {
         speedOfPaddle2 = 10;
     }
 
-    /*if (e.keyCode == 69 && specialBar1 == 100|| e.which == 69 && specialBar1 == 100) { // e
-          pwrUp("paddle1");
+    if (e.keyCode == 69 && specialBar1 == 100|| e.which == 69 && specialBar1 == 100) { // e
+      pwrUp("paddle1");
 
+      setTimeout(function(){endPwrUp("paddle1");}, 2000);
+
+      specialBar1 = 0;
 
     }
 
-    if (e.keyCode == 80 && specialBar1 == 100|| e.which == 80 && specialBar1 == 100) { // /
+    if (e.keyCode == 80 && specialBar2 == 100|| e.which == 80 && specialBar2 == 100) { // p
+      pwrUp("paddle2");
 
-    }*/
+      setTimeout(function(){endPwrUp("paddle2");}, 2000);
+
+      specialBar2 = 0;
+    }
 
 
 });
 
-
 function pwrUp(p) {
-  document.getElementById(p).style.height = 100 + "%";
+  if(p == "paddle1"){
+    pwrUpOn1 = true;
+  } else {
+    pwrUpOn2 = true;
+  }
+
 }
 
 function endPwrUp(p) {
-  document.getElementById(p).style.height = 125 + "px";
+  if(p == "paddle1"){
+    pwrUpOn1 = false;
+  } else {
+    pwrUpOn2 = false;
+  }
 }
 
 // Stop paddles
@@ -136,21 +154,18 @@ function startBall() {
   }
 
   // speed of ball depends on time
-  if(time > 80) {
-  topSpeedOfBall = Math.random() * 2 + 3;
-  leftSpeedOfBall = direction * (Math.random() * 2 + 3);
-} else if (time > 60) {
-  topSpeedOfBall = Math.random() * 3 + 4;
-  leftSpeedOfBall = direction * (Math.random() * 3 + 4);
-} else if (time > 40) {
+   if (s1 == 5 || s2 == 5) {
   topSpeedOfBall = Math.random() * 4 + 5;
   leftSpeedOfBall = direction * (Math.random() * 4 + 5);
-} else if (time > 20) {
+} else if (s1 == 10 || s2 == 10) {
   topSpeedOfBall = Math.random() * 5 + 6;
   leftSpeedOfBall = direction * (Math.random() * 5 + 6);
-} else if (time > 10) {
+} else if (s1 > 10 || s2 > 10) {
   topSpeedOfBall = Math.random() * 6 + 7;
   leftSpeedOfBall = direction * (Math.random() * 6 + 7);
+} else {
+  topSpeedOfBall = Math.random() * 3 + 4;
+  leftSpeedOfBall = direction * (Math.random() * 3 + 4);
 }
 
 
@@ -178,12 +193,16 @@ function show() {
   } // if
 
   // stop the paddle from leaving bottom of gameboard
-  if (positionOfPaddle1 >= gameboardHeight - paddleHeight) {
+  if (pwrUpOn1 == true && positionOfPaddle1 >= gameboardHeight - pwrUpPaddleHeight) {
+    positionOfPaddle1 = gameboardHeight - pwrUpPaddleHeight;
+  } else if (positionOfPaddle1 >= gameboardHeight - paddleHeight) {
     positionOfPaddle1 = gameboardHeight - paddleHeight;
   } // if
 
   // stop the paddle from leaving bottom of gameboard
-  if (positionOfPaddle2 >= gameboardHeight - paddleHeight) {
+  if (pwrUpOn2 == true && positionOfPaddle2 >= gameboardHeight - pwrUpPaddleHeight) {
+    positionOfPaddle2 = gameboardHeight - pwrUpPaddleHeight;
+  } else if (positionOfPaddle2 >= gameboardHeight - paddleHeight) {
     positionOfPaddle2 = gameboardHeight - paddleHeight;
   } // if
 
@@ -196,7 +215,11 @@ function show() {
   if (leftPositionOfBall <= paddleWidth) {
 
     // if ball hits left paddle, change direction
-    if (topPositionOfBall > positionOfPaddle1 && topPositionOfBall < positionOfPaddle1
+    if(pwrUpOn1 == true && topPositionOfBall > positionOfPaddle1 &&
+        topPositionOfBall < positionOfPaddle1 + pwrUpPaddleHeight){
+          bounce.play();
+          leftSpeedOfBall *= -1;
+        } else if (topPositionOfBall > positionOfPaddle1 && topPositionOfBall < positionOfPaddle1
         + paddleHeight) {
           bounce.play();
       leftSpeedOfBall *= -1;
@@ -204,8 +227,10 @@ function show() {
       specialBar1 += 10;
       }
     } else {
-      if(specialBar2 < 100){
+      if(specialBar2 < 90){
       specialBar2 += 20;
+    } else if(specialBar2 = 90){
+      specialBar2 += 10;
       }
       startBall();
       score.play();
@@ -216,7 +241,11 @@ function show() {
   // ball on right edge of gameboard
   if (leftPositionOfBall >= gameboardWidth - paddleWidth - ballHeight) {
     // if ball hits right paddle, change direction
-    if (topPositionOfBall > positionOfPaddle2 &&
+    if(pwrUpOn2 == true && topPositionOfBall > positionOfPaddle2 &&
+        topPositionOfBall < positionOfPaddle2 + pwrUpPaddleHeight){
+          bounce.play();
+          leftSpeedOfBall *= -1;
+        } else if (topPositionOfBall > positionOfPaddle2 &&
         topPositionOfBall < positionOfPaddle2 + paddleHeight) {
           bounce.play();
       leftSpeedOfBall *= -1;
@@ -224,9 +253,11 @@ function show() {
       specialBar2 += 10;
       }
     } else {
-      if(specialBar1 < 100){
-      specialBar1 += 10;
-      }
+      if(specialBar1 < 90){
+      specialBar1 += 20;
+    } else if(specialBar1 = 90){
+        specialBar1 += 10;
+        }
       startBall();
       score.play();
       s1++;
@@ -241,6 +272,18 @@ function show() {
   document.getElementById("score2").innerHTML = s2;
   document.getElementById("sp1").style.width = specialBar1 + "px";
   document.getElementById("sp2").style.width = specialBar2 + "px";
+
+  if (pwrUpOn1 == true){
+    document.getElementById("paddle1").style.height = pwrUpPaddleHeight + "px";
+  } else {
+    document.getElementById("paddle1").style.height = 125 + "px";
+  }
+
+  if (pwrUpOn2 == true){
+    document.getElementById("paddle2").style.height = pwrUpPaddleHeight + "px";
+  } else {
+    document.getElementById("paddle2").style.height = 125 + "px";
+  }
 
 } // show
 
@@ -276,7 +319,8 @@ function newGame() {
   changeVisibility("lightbox");
   changeVisibility("Menu");
 
-  time = 99;
+
+  time = 60;
   countdown();
 
   gamePaused = false;
@@ -284,6 +328,8 @@ function newGame() {
   // reseting locations and scores
   s1 = 0;
   s2 = 0;
+  specialBar1 = 0;
+  specialBar2 = 0;
   positionOfPaddle1 = startPositionOfPaddle1;
   positionOfPaddle2 = startPositionOfPaddle2;
 
@@ -395,13 +441,16 @@ function continueGame() {
   changeVisibility("lightbox");
   changeVisibility("boundaryMessage");
 
-  time = 99;
+
+  time = 60;
   countdown();
 
   gameStarted = true;
 
   s1 = 0;
   s2 = 0;
+  specialBar1 = 0;
+  specialBar2 = 0;
   positionOfPaddle1 = startPositionOfPaddle1;
   positionOfPaddle2 = startPositionOfPaddle2;
 
