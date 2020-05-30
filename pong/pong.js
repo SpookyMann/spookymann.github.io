@@ -7,8 +7,8 @@ const startPositionOfPaddle2 = document.getElementById("paddle2").offsetTop;
 var positionOfPaddle2 = document.getElementById("paddle2").offsetTop;
 var s1 = 0;
 var s2 = 0;
-var specialBar1 = 100;
-var specialBar2 = 100;
+var specialBar1 = 0;
+var specialBar2 = 0;
 var pwrUpOn1 = false;
 var pwrUpOn2 = false;
 
@@ -49,7 +49,6 @@ window.addEventListener('load', function() {
 
 // Move paddles
 document.addEventListener('keydown', function(e) {
-     console.log("key down " + e.keyCode);
     if (e.keyCode == 87 || e.which == 87) { // W
         speedOfPaddle1 = -10;
     }
@@ -66,7 +65,7 @@ document.addEventListener('keydown', function(e) {
         speedOfPaddle2 = 10;
     }
 
-    if (e.keyCode == 69 && specialBar1 == 100|| e.which == 69 && specialBar1 == 100) { // e
+    if (e.keyCode == 69 && specialBar1 == 100|| e.which == 69 && specialBar1 == 100) { // E
       pwrUp("paddle1");
 
       setTimeout(function(){endPwrUp("paddle1");}, 2000);
@@ -75,7 +74,7 @@ document.addEventListener('keydown', function(e) {
 
     }
 
-    if (e.keyCode == 80 && specialBar2 == 100|| e.which == 80 && specialBar2 == 100) { // p
+    if (e.keyCode == 80 && specialBar2 == 100|| e.which == 80 && specialBar2 == 100) { // P
       pwrUp("paddle2");
 
       setTimeout(function(){endPwrUp("paddle2");}, 2000);
@@ -105,7 +104,6 @@ function endPwrUp(p) {
 
 // Stop paddles
 document.addEventListener('keyup', function(e) {
-    // console.log("key up " + e.keyCode);
     if (e.keyCode == 87 || e.which == 87) { // W
         speedOfPaddle1 = 0;
     }
