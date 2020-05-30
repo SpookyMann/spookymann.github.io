@@ -151,14 +151,14 @@ function startBall() {
    direction = -1;
   }
 
-  // speed of ball depends on time
-   if (s1 == 5 || s2 == 5) {
+  // speed of ball depends on points
+   if (s1 >= 4 && s1 < 8|| s2 >= 4 && s2 < 8) {
   topSpeedOfBall = Math.random() * 4 + 5;
   leftSpeedOfBall = direction * (Math.random() * 4 + 5);
-} else if (s1 == 10 || s2 == 10) {
+} else if (s1 >= 8 && s1 <= 12|| s2 >= 8 && s2 <= 12) {
   topSpeedOfBall = Math.random() * 5 + 6;
   leftSpeedOfBall = direction * (Math.random() * 5 + 6);
-} else if (s1 > 10 || s2 > 10) {
+} else if (s1 > 12 || s2 > 12) {
   topSpeedOfBall = Math.random() * 6 + 7;
   leftSpeedOfBall = direction * (Math.random() * 6 + 7);
 } else {

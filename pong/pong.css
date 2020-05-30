@@ -53,14 +53,11 @@ body {
   width: 100px;
 }
 
-#header h2 {
+.score {
+  font-size: 30px;
   position: absolute;
   bottom: 0px;
   margin-bottom: 2px;
-}
-
-.score {
-  font-size: 30px;
 }
 
 #header #left {
@@ -275,7 +272,7 @@ body {
   margin: auto;
 }
 
-#title {
+.title {
   font-size: 100px;
   text-align: center;
   background-image: linear-gradient(135deg, rgba(208,0,0,1) 0%, rgba(255,149,5,1) 50%,
