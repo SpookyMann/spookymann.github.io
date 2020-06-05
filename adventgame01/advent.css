@@ -1,0 +1,103 @@
+body {
+  background-color: black;
+}
+
+#gameBoard {
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: 120px 120px 120px 120px 120px;
+  grid-auto-rows: 120px 120px 120px 120px 120px;
+  justify-content: center;
+  width: 600px;
+  height: 600px;
+
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+#gameBoard div{
+  background-color: #00AA00;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/**** sprites ****/
+.rider {
+  background-image: url("images/rider.png");
+}
+
+.mountUp {
+  background-image: url("images/mount.png");
+}
+.mountDown {
+  background-image: url("images/mountdown.png");
+}
+.mountRight {
+  background-image: url("images/mountright.png");
+}
+.mountLeft {
+  background-image: url("images/mountleft.png");
+}
+
+.mounted {
+  background-image: url("images/mounted.png");
+}
+.mountedDown {
+  background-image: url("images/mounteddown.png");
+}
+.mountedRight {
+  background-image: url("images/mountedright.png");
+}
+.mountedLeft {
+  background-image: url("images/mountedleft.png");
+}
+
+.fenceSide {
+  background-image: url("images/fenceside.png");
+}
+.fenceUp {
+  background-image: url("images/fenceup.png");
+}
+.fenceJump {
+  background-image: url("images/fenJump.png");
+}
+.fenceJumpDown {
+  background-image: url("images/fenJumpd.png");
+}
+.fenceJumpRight {
+  background-image: url("images/fenJumpr.png");
+}
+.fenceJumpLeft {
+  background-image: url("images/fenJumpl.png");
+}
+
+.flag {
+  background-image: url("images/flag.png");
+}
+.rock {
+  background-image: url("images/rock.png");
+}
+.water {
+  background-image: url("images/water.png");
+}
+.tree {
+  background-image: url("images/tree.png");
+}
+
+.mobUp {
+  background-image: url("images/mob.png");
+}
+.mobDown {
+  background-image: url("images/mobdown.png");
+}
+.mobRight {
+  background-image: url("images/mobright.png");
+}
+.mobLeft {
+  background-image: url("images/mobleft.png");
+}
+
+.bridge {
+  background-color: #800020 !important;
+}
+/**** sprite end ****/
