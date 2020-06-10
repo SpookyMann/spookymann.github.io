@@ -8,15 +8,15 @@
 
    // level 1
    ["rock", "rock", "rock", "rock", "rock",
-   "", "water", "", "animate", "",
-   "flag", "fenceUp", "rider","animate","mountleft",
-   "", "water", "", "animate", "",
+   "", "water", "rider", "", "",
+   "flag", "fenceUp", "animate","animate", "mountleft",
+   "", "water", "", "", "",
    "rock", "rock", "rock", "rock", "rock"],
 
    // level 2
-   ["flag", "rock", "", "", "",
-   "fenceSide", "rock", "", "", "rider",
-   "", "tree", "animate","animate","animate",
+   ["", "rock", "flag", "rock", "",
+   "", "rock", "fenceSide", "rock", "rider",
+   "", "", "animate","animate","animate",
    "", "", "", "", "",
    "water", "rock", "mountup", "rock", "water"]
 
