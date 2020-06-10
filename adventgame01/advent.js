@@ -8,7 +8,7 @@
 
    // level 1
    ["rock", "rock", "rock", "rock", "rock",
-   "", "water", "rider", "", "",
+   "", "water", "rider", "fenceUp", "",
    "flag", "fenceUp", "animate","animate", "mountleft",
    "", "water", "", "", "",
    "rock", "rock", "rock", "rock", "rock"],
