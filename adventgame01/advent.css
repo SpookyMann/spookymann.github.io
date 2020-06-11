@@ -59,16 +59,16 @@ body {
   background-image: url("images/fenceup.png");
 }
 .fenceJumpUp {
-  background-image: url("images/fenJump.png");
+  background-image: url("images/fenjump.png");
 }
 .fenceJumpDown {
-  background-image: url("images/fenJumpd.png");
+  background-image: url("images/fenjumpd.png");
 }
 .fenceJumpRight {
-  background-image: url("images/fenJumpr.png");
+  background-image: url("images/fenjumpr.png");
 }
 .fenceJumpLeft {
-  background-image: url("images/fenJumpl.png");
+  background-image: url("images/fenjumpl.png");
 }
 
 .flag {
