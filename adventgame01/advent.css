@@ -5,19 +5,19 @@ body {
 #gameBoard {
   border: 1px solid black;
   display: grid;
-  grid-template-columns: 120px 120px 120px 120px 120px;
-  grid-auto-rows: 120px 120px 120px 120px 120px;
+  grid-template-columns: 180px 180px 180px 180px 180px 180px;
+  grid-auto-rows: 180px 180px 180px 180px 180px;
   justify-content: center;
-  width: 600px;
-  height: 600px;
+  width: 1080px;
+  height: 900px;
 
   margin-left: auto;
   margin-right: auto;
-
+  background-image: url("images/grass.png");
+  background-size: 50px;
 }
 
 #gameBoard div{
-  background-color: #00AA00;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -26,17 +26,17 @@ body {
   background-image: url("images/rider.png");
 }
 
-.mountup {
-  background-image: url("images/mount.png");
+.girlup {
+  background-image: url("images/anikaup.png");
 }
-.mountdown {
-  background-image: url("images/mountdown.png");
+.girldown {
+  background-image: url("images/anikadown.png");
 }
-.mountright {
-  background-image: url("images/mountright.png");
+.girlright {
+  background-image: url("images/anikaright.png");
 }
-.mountleft {
-  background-image: url("images/mountleft.png");
+.girlleft {
+  background-image: url("images/anikaleft.png");
 }
 
 .mountedup {
@@ -59,16 +59,16 @@ body {
   background-image: url("images/fenceup.png");
 }
 .fenceJumpUp {
-  background-image: url("images/fenjump.png");
+  background-image: url("images/fenJump.png");
 }
 .fenceJumpDown {
-  background-image: url("images/fenjumpd.png");
+  background-image: url("images/fenJumpd.png");
 }
 .fenceJumpRight {
-  background-image: url("images/fenjumpr.png");
+  background-image: url("images/fenJumpr.png");
 }
 .fenceJumpLeft {
-  background-image: url("images/fenjumpl.png");
+  background-image: url("images/fenJumpl.png");
 }
 
 .flag {
@@ -77,8 +77,21 @@ body {
 .rock {
   background-image: url("images/rock.png");
 }
+.rocktwo {
+  background-image: url("images/rock2.png");
+}
 .water {
   background-image: url("images/water.png");
+}
+.waterBorderUp {
+  background-image: url("images/water.png");
+  border-top-left-radius: 10%;
+  border-top-right-radius: 10%;
+}
+.waterBorderDown {
+  background-image: url("images/water.png");
+  border-bottom-left-radius: 10%;
+  border-bottom-right-radius: 10%;
 }
 .tree {
   background-image: url("images/tree.png");

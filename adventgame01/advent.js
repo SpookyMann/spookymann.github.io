@@ -1,15 +1,16 @@
   const levels = [
+
     // level 0
-   ["flag", "rock", "", "", "",
-   "fenceSide", "rock", "", "", "rider",
-   "", "tree", "animate","animate","animate",
-   "", "water", "", "", "",
-   "", "fenceUp", "", "mountup", ""],
+   ["flag", "rock", "", "", "", "",
+   "fenceSide", "water", "", "fenceUp", "rider", "rock",
+   "", "water", "animate","animate","animate", "rock",
+   "", "water", "", "", "", "",
+   "", "fenceUp", "", "girlup", "", ""],
 
    // level 1
    ["rock", "rock", "rock", "rock", "rock",
    "", "water", "rider", "fenceUp", "",
-   "flag", "fenceUp", "animate","animate", "mountleft",
+   "flag", "fenceUp", "animate","animate", "girlleft",
    "", "water", "", "", "",
    "rock", "rock", "rock", "rock", "rock"],
 
@@ -18,19 +19,20 @@
    "", "rock", "fenceSide", "rock", "rider",
    "", "", "animate","animate","animate",
    "", "", "", "", "",
-   "water", "rock", "mountup", "rock", "water"]
+   "water", "rock", "girlup", "rock", "water"]
 
    ];
 
 const gridBoxes = document.querySelectorAll("#gameBoard div")
-const noPassObstacles = ["rock", "tree", "water"];
+const noPassObstacles = ["rock", "tree", "water", "rocktwo", "waterBorderUp",
+                          "waterBorderDown"];
 
 
 var currentLevel = 0; // starting level
 var riderOn = false; // is the rider on?
 var currentLocationOfHorse = 0;
 var currentAnimation; // allows 1 animation per level
-var widthOfBoard = 5;
+var widthOfBoard = 6;
 
 // start game
 window.addEventListener("load", function () {
@@ -104,6 +106,8 @@ function tryToMove(direction) {
 
   nextClass = gridBoxes[nextLocation].className;
 
+  if (!riderOn && nextClass.includes("flag")) { return; }
+
   // if the obstacle is not passable, don't move
   if (noPassObstacles.includes(nextClass)) { return; }
 
@@ -119,22 +123,52 @@ function tryToMove(direction) {
       oldClassName = gridBoxes[nextLocation].className;
 
       // set values accoding to direction
-      if (direction == "left") {
+      if (direction == "left" && nextClass.includes("fenceUp")) {
         nextClass = "fenceJumpLeft";
-        nextClass2 = "mountedleft";
         nextLocation2 = nextLocation - 1;
-      } else if (direction == "right") {
+
+        // check if there is obstacle after jump
+        if (noPassObstacles.includes(gridBoxes[nextLocation2].className)) {
+          nextClass2 = "mountedright";
+          nextLocation2 = nextLocation + 1;
+        } else {
+          nextClass2 = "mountedleft";
+        }
+      } else if (direction == "right" && nextClass.includes("fenceUp")) {
         nextClass = "fenceJumpRight";
-        nextClass2 = "mountedright";
         nextLocation2 = nextLocation + 1;
-      } else if (direction == "up") {
+
+        // check if there is obstacle after jump
+        if (noPassObstacles.includes(gridBoxes[nextLocation2].className)) {
+          nextClass2 = "mountedleft";
+          nextLocation2 = nextLocation - 1;
+        } else {
+          nextClass2 = "mountedright";
+        }
+      } else if (direction == "up" && nextClass.includes("fenceSide")) {
         nextClass = "fenceJumpUp";
-        nextClass2 = "mounteup";
         nextLocation2 = nextLocation - widthOfBoard;
-      } else if (direction == "down") {
+
+        // check if there is obstacle after jump
+        if (noPassObstacles.includes(gridBoxes[nextLocation2].className)) {
+          nextClass2 = "mounteddown";
+          nextLocation2 = nextLocation + widthOfBoard;
+        } else {
+          nextClass2 = "mountedup";
+        }
+      } else if (direction == "down" && nextClass.includes("fenceSide")) {
         nextClass = "fenceJumpDown";
-        nextClass2 = "mounteddown";
         nextLocation2 = nextLocation + widthOfBoard;
+
+        // check if there is obstacle after jump
+        if (noPassObstacles.includes(gridBoxes[nextLocation2].className)) {
+          nextClass2 = "mountedup";
+          nextLocation2 = nextLocation - widthOfBoard;
+        } else {
+          nextClass2 = "mounteddown";
+        }
+      } else {
+        return;
       }
 
       // show horse jumping
@@ -177,7 +211,7 @@ function tryToMove(direction) {
   } // else
 
   // build name of new class
-  newClass = (riderOn) ? "mounted" : "mount";
+  newClass = (riderOn) ? "mounted" : "girl";
   newClass += direction;
 
   // if there is a bridge in the next location, keep it
@@ -219,16 +253,24 @@ function loadLevel(){
   let animateBoxes;
   riderOn = false;
 
+  if (currentLevel < 3) {
   // load board
   for (i = 0; i < gridBoxes.length; i++) {
     gridBoxes[i].className = levelMap[i];
-    if (levelMap[i].includes("mount")) currentLocationOfHorse = i;
+    if (levelMap[i].includes("girl")) currentLocationOfHorse = i;
   } // for
+
+  if (currentLevel == 0) {
+    gridBoxes[7].className = "waterBorderUp";
+    gridBoxes[19].className = "waterBorderDown";
+  }
 
   animateBoxes = document.querySelectorAll(".animate");
 
   animateEnemy(animateBoxes, 0, "right");
-
+} else {
+  console.log("Game over");
+}
 } // loadLevel
 
 // animate enemy left to right (could add up and down to this)
@@ -236,6 +278,7 @@ function loadLevel(){
 // index - current location of animation
 // direction - current direction of animation
 function animateEnemy(boxes, index, direction) {
+  check = boxes[index].className;
 
   // exit function if no animation
   if (boxes.length <= 0) { return; }
@@ -254,6 +297,10 @@ function animateEnemy(boxes, index, direction) {
       boxes[i].classList.remove("mobRight");
     } // if
   } // for
+
+  if (check.includes("girl")) {
+    document.getElementById("lose").style.display = "block";
+  }
 
   // moving right
   if (direction == "right") {
