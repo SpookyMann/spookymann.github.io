@@ -104,7 +104,7 @@ document.addEventListener("keydown", function (e) {
     break;
 
     case 40: // down arrow
-    if (currentLocationOfHorse + widthOfBoard < widthOfBoard * widthOfBoard) {
+    if (currentLocationOfHorse + widthOfBoard < widthOfBoard * 5) {
        tryToMove("down");
     }
     break;
