@@ -1,0 +1,627 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+body {
+  background-color: black;
+  font-family: 'VT323', monospace;
+}
+
+#gameBoard {
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: 180px 180px 180px 180px 180px 180px;
+  grid-auto-rows: 180px 180px 180px 180px 180px;
+  justify-content: center;
+  width: 1080px;
+  height: 900px;
+
+  margin-left: auto;
+  margin-right: auto;
+  background-image: url("images/grass.png");
+  background-size: 90px;
+}
+
+#gameBoard div{
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/**** sprites ****/
+.pwrup {
+  background-image: url("images/allseeeye.png");
+}
+
+.girlup {
+  background-image: url("images/anikaup.png");
+}
+.girldown {
+  background-image: url("images/anikadown.png");
+}
+.girlright {
+  background-image: url("images/anikaright.png");
+}
+.girlleft {
+  background-image: url("images/anikaleft.png");
+}
+
+.awakenedup {
+  background-image: url("images/awakenedup.png");
+}
+.awakeneddown {
+  background-image: url("images/awakeneddown.png");
+}
+.awakenedright {
+  background-image: url("images/awakenedright.png");
+}
+.awakenedleft {
+  background-image: url("images/awakenedleft.png");
+}
+
+.wallSide {
+  background-image: url("images/wallside.png");
+}
+.wallUp {
+  background-image: url("images/wallup.png");
+}
+.wallPhaseUp {
+  background-image: url("images/phaseup.png");
+}
+.wallPhaseDown {
+  background-image: url("images/phasedown.png");
+}
+.wallPhaseRight {
+  background-image: url("images/phaseside.png");
+}
+.wallPhaseLeft {
+  background-image: url("images/phaseside.png");
+}
+.cursedWallUp{
+  background-image: url("images/cursedwallup.png");
+}
+.cursedWallSide{
+  background-image: url("images/cursedwallside.png");
+}
+
+.heart {
+  background-image: url("images/heart.png");
+}
+.rock {
+  background-image: url("images/rock.png");
+}
+.rocktwo {
+  background-image: url("images/rock2.png");
+}
+.water {
+  background-image: url("images/water.png");
+}
+.tree {
+  background-image: url("images/tree.png");
+}
+
+.mobUp {
+  background-image: url("images/mob.png");
+}
+.mobDown {
+  background-image: url("images/mobdown.png");
+}
+.mobRight {
+  background-image: url("images/mobright.png");
+}
+.mobLeft {
+  background-image: url("images/mobleft.png");
+}
+
+.bridge {
+  background-color: #800020 !important;
+}
+/**** sprite end ****/
+
+.message {
+  display: none;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  font-size: 8em;
+  vertical-align: top;
+  text-align: center;
+  line-height: 100vh;
+}
+
+#levelup {
+  color: #8f1d1d;
+}
+
+/**** player menu ****/
+#header {
+  position: relative;
+  width: 1080px;
+  height: 5vh;
+  margin: auto;
+}
+
+#left {
+  font-size: 30px;
+  color: purple;
+  position: absolute;
+  top: 15px;
+}
+
+.healthbar {
+  position: absolute;
+  top: 15px;
+}
+
+#right {
+  font-size: 30px;
+  right: 0px;
+  color: purple;
+}
+
+.bar {
+  display: inline-block;
+  width: 200px;
+  margin: auto 10px auto 10px;
+}
+
+#health {
+  margin: 0;
+  height: 15px;
+  border: 0;
+  width: 200px;
+  background: rgb(212,0,249);
+ background: linear-gradient(90deg, rgba(212,0,249,1) 11%, rgba(229,165,240,1) 100%);
+}
+
+#bar {
+  border: 3px solid purple;
+}
+
+.pausebutton {
+  position: absolute;
+  display: block;
+  margin: auto;
+  padding: 6px;
+  width: 200px;
+  height: 20px;
+  border-radius: 7px;
+  font-size: 30px;
+  left: 500px;
+  top: 4px;
+}
+
+#pause {
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+  border-radius: 7px;
+  width: 40px;
+  height: 40px;
+}
+
+#pause hr{
+  display: inline-block;
+  margin: auto;
+  width: 7px;
+  height: 24px;
+  margin: -3px;
+  border-radius: 1px;
+  border: 0px;
+  background-image: linear-gradient(180deg, rgba(212,0,249,1) 11%, rgba(229,165,240,1) 100%);
+}
+
+/**** player menu end ****/
+
+/**** paused menu ****/
+
+.positionMenu {
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  top: 100px;
+  left: 0px;
+  width: 100%;
+  z-index: 3;
+}
+
+#Menu {
+  background: #e0bde7;
+  text-align: center;
+  border: 10px solid #d400f9;
+  border-radius: 10px;
+  width: 400px;
+  height: 400px;
+  margin: auto;
+  letter-spacing: 3px;
+}
+
+#Menu h1 {
+  font-size: 90px;
+  background: -webkit-linear-gradient(270deg, rgba(212,0,249,1) 11%, rgba(229,165,240,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.controls {
+  display: block;
+  margin: auto;
+  margin-bottom: 30px;
+  padding: 6px;
+  width: 300px;
+  height: 20px;
+  color: white;
+  text-align: center;
+  border-radius: 7px;
+  font-size: 40px;
+}
+
+#resume {
+  margin-bottom: 30px;
+}
+
+/**** pause menu end ****/
+
+/**** lightbox ****/
+.hidden {
+  display: none;
+}
+
+.unhidden {
+  display: block;
+}
+
+#lightbox {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+
+}
+
+/**** lightbox end ****/
+
+/**** title screen ****/
+
+#titleMenu {
+  text-align: center;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+}
+
+#alignment {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 280px;
+}
+
+ #alignment::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background-image: url("images/mobdown.png");
+  background-size: 400px;
+  background-repeat: no-repeat;
+  background-position: center;
+   background-attachment: fixed;
+  opacity: 0.15;
+}
+
+.title {
+  position: relative;
+  font-size: 150px;
+  font-weight: bold;
+  text-align: center;
+  background: -webkit-linear-gradient(270deg, rgba(212,0,249,1) 11%, rgba(229,165,240,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#next {
+  position: relative;
+  text-align: center;
+  color: white;
+  text-shadow: 2px 2px black;
+  font-size: 20px;
+}
+
+.blink {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% { opacity: 0; }
+}
+
+/**** title screen end ****/
+
+/**** instructions ****/
+
+#guide {
+  text-align: center;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+}
+
+#gTitle {
+  font-size: 90px;
+  background: -webkit-linear-gradient(270deg, rgba(212,0,249,1) 11%, rgba(229,165,240,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#guide hr {
+  border: 1px solid transparent;
+  border-image: linear-gradient(270deg, rgba(212,0,249,1) 11%, rgba(229,165,240,1) 100%);
+  border-image-slice: 1;
+  border-width: 2px;
+  margin-top: -30px;
+}
+
+#guide ul {
+  text-align: center;
+}
+
+#guide li {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 35px;
+  color: #FFF;
+}
+
+.insImg {
+  width: 50px;
+  vertical-align: middle;
+}
+
+#continue {
+  margin-top: 90px;
+  position: relative;
+  text-align: center;
+  color: white;
+  text-shadow: 2px 2px black;
+  font-size: 30px;
+}
+
+/**** instructions end ****/
+
+/**** death screen ****/
+
+#deathScreen {
+  text-align: center;
+  width: 400px;
+  height: 400px;
+  margin: auto;
+  letter-spacing: 3px;
+}
+
+#deathScreen h1 {
+  font-size: 200px;
+  color: #8f1d1d;
+}
+
+.fade-in {
+animation: fadeIn ease 4s;
+-webkit-animation: fadeIn ease 4s;
+-moz-animation: fadeIn ease 4s;
+-o-animation: fadeIn ease 4s;
+-ms-animation: fadeIn ease 4s;
+}
+@keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-moz-keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-webkit-keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-o-keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-ms-keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+#re {
+  display: block;
+  margin: auto;
+  margin-bottom: 30px;
+  padding: 6px;
+  width: 300px;
+  height: 20px;
+  color: white;
+  text-align: center;
+  border-radius: 7px;
+  font-size: 40px;
+}
+
+/**** death screen end ****/
+
+/**** story menu ****/
+
+#lore {
+  text-align: center;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+}
+
+#lore p {
+  font-size: 50px;
+  color: #FFF;
+}
+
+#text {
+  padding: 30px;
+}
+
+#start {
+  margin-top: 90px;
+  position: relative;
+  text-align: center;
+  color: white;
+  text-shadow: 2px 2px black;
+  font-size: 30px;
+}
+
+#dramaticfade {
+animation: fadein ease 15s;
+-webkit-animation: fadein ease 15s;
+-moz-animation: fadein ease 15s;
+-o-animation: fadein ease 15s;
+-ms-animation: fadein ease 15s;
+}
+@keyframes fadein {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-moz-keyframes fadein {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-webkit-keyframes fadein {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-o-keyframes fadein {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-ms-keyframes fadein {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+#dramaticfade2 {
+animation: fadein2 ease 20s;
+-webkit-animation: fadein2 ease 20s;
+-moz-animation: fadein2 ease 20s;
+-o-animation: fadein2 ease 20s;
+-ms-animation: fadein2 ease 20s;
+}
+@keyframes fadein2 {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-moz-keyframes fadein2 {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-webkit-keyframes fadein2 {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-o-keyframes fadein2 {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-ms-keyframes fadein2 {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+/**** story menu end ****/
+
+/**** End game screen ****/
+#endscreen {
+  text-align: center;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+}
+
+
+#alignmenttwo {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 280px;
+}
+
+ #alignmenttwo::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background-image: url("images/anikadown.png");
+  background-size: 400px;
+  background-repeat: no-repeat;
+  background-position: center;
+   background-attachment: fixed;
+  opacity: 0.15;
+}
+
+#endTitle {
+  position: relative;
+  font-size: 180px;
+  font-weight: bold;
+  text-align: center;
+  background: -webkit-linear-gradient(270deg, rgba(212,0,249,1) 11%, rgba(229,165,240,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#urTime {
+  font-size: 50px;
+  color: #FFF;
+  margin-top: -50px;
+}
+
+#endscreen h2 {
+  font-size: 52px;
+  margin-top: -80px;
+  color: #FFF;
+}
+
+#re {
+  margin-top: 5px;
+  position: relative;
+  text-align: center;
+  color: white;
+  text-shadow: 2px 2px black;
+  font-size: 30px;
+}

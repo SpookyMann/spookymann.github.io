@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Soul Search</title>
+
+
+    <link rel="stylesheet" href="advent.css">
+
+
+  </head>
+
+  <body>
+    <div id="header">
+    <!---  <div class="timer"> <h1 id="minutes">00</h1>:<h1 id="seconds">00</h1> </div>-->
+    <div id="left" class="level"></div>
+    <div id="right" class="healthbar">HP<div id=bar class="bar"><hr id="health"></div></div>
+    <div onclick="pauseGame()" id="pause" class="pausebutton">
+      <hr>
+      <hr>
+    </div>
+    </div>
+
+    <div id="gameBoard">
+
+      <div>  </div>
+      <div>  </div>
+      <div>  </div>
+      <div>  </div>
+      <div>  </div>
+      <div>  </div>
+
+      <div>  </div>
+      <div>  </div>
+      <div>  </div>
+      <div>  </div>
+      <div>  </div>
+      <div>  </div>
+
+      <div>  </div>
+      <div>  </div>
+      <div>  </div>
+      <div>  </div>
+      <div>  </div>
+      <div>  </div>
+
+      <div>  </div>
+      <div>  </div>
+      <div>  </div>
+      <div>  </div>
+      <div>  </div>
+      <div>  </div>
+
+      <div>  </div>
+      <div>  </div>
+      <div>  </div>
+      <div>  </div>
+      <div>  </div>
+      <div>  </div>
+
+    </div>
+
+    <div id="titleMenu" class="hidden">
+      <div id="alignment">
+        <h1 class="title">Soul Search</h1>
+        <div onclick="instructions()" id="next" class="blink">
+          ENTER?
+        </div>
+      </div>
+    </div>
+
+    <div id="guide" class="hidden">
+      <h1 id="gTitle">-GUIDE-</h1>
+      <hr>
+      <ul>
+        <li>You play as Anika <img src="images/anikadown.png" alt="anika" class="insImg"></li>
+        <li>Your Goal is to get to these floating hearts <img src="images/heart.png" alt="heart" class="insImg"></li>
+        <li>But to get to them you must get past these walls <img src="images/wallup.png" alt="wallup" class="insImg"> <img src="images/wallSide.png" alt="wallside" class="insImg"></li>
+        <li>To get pass these walls you must gain an Awakened form <img src="images/awakeneddown.png" alt="awakened" class="insImg"></li>
+        <li>You must get a All Seeing Eye to achieve this form <img src="images/allseeeye.png" alt="allseeingeye" class="insImg"></li>
+        <li>But careful as cursed walls will take away your HP if you don't look carefully <img src="images/cursedwallup.png" alt="cursedwallup" class="insImg"><img src="images/cursedwallside.png" alt="cursedwallside" class="insImg"> </li>
+        <li>Along the way you'll run into ghouls that'll steal your HP <img src="images/mobDown.png" alt="ghoul" class="insImg"></li>
+        <li>Once your HP hits 0 you'll die and will have to start over at level 1</li>
+        <li>You will be timed in the background by the game, you'll be able to know your time at the end of the game </li>
+    </ul>
+    <br>
+    <br>
+    <br>
+    <hr>
+
+    <div onclick="lore()" id="continue" class="blink">
+      Continue >
+    </div>
+    </div>
+
+    <div id="lore" class="hidden">
+      <div id="text">
+      <p id="dramaticfade">In a far away land, forgotten by time. A young girl who was desperate for answers made a deal with a demon.
+      Through this deal she hope to find her brother who had been taken to another realm by a monster.
+      As she signed her signature on to the contract she is suddenly pull into a portal leading to darkness.</p>
+      <br>
+      <p id="dramaticfade2">Once she awoke, she sees that she is no longer in her world, but rather, a much more morbid one.
+        Suddenly a heavenly magenta woman appears before her. This being claims to be her guide, a guide to her brother.
+        The guide tells the girl that she must gather all the pieces of her brothers soul, that have been encased in demon alters.
+        Then the guide tells that inorder to do so she must finder eyes that grant the girl powers similar to her own.
+        Scared but desperate, the young girl ventures forth into the unknown, to save her brother, and escape this demonic realm...</p>
+      </div>
+
+      <div onclick="startGame()" id="start" class="blink">
+        Continue >
+      </div>
+    </div>
+
+    <div class="positionMenu">
+      <div id="Menu" class="hidden">
+        <h1 class="title">Paused</h1>
+        <div onclick="resumeGame()" id="resume" class="controls">
+          Resume Game
+        </div>
+        <div onclick="newGame()" id="new" class="controls">
+          New Game
+        </div>
+      </div>
+    </div>
+
+    <div class="positionMenu">
+      <div id="deathScreen" class="hidden">
+        <h1 id="YourDead" class="fade-in">END</h1>
+        <div onclick="reGame()" id="re" class="fade-in">
+          RE:Start?
+        </div>
+      </div>
+    </div>
+
+    <div id="endscreen" class="hidden">
+      <div id="alignmenttwo">
+        <h1 id="endTitle">The End??</h1>
+          <h2>You Beat Soul Search In</h2>
+          <div id="urTime"><span id="minutes"></span>:<span id="seconds"></span>
+          </div>
+
+        <div onclick="renewGame()" id="renew" class="blink">
+          Re:Play?
+        </div>
+      </div>
+    </div>
+
+    <div id="lightbox" class="hidden"></div>
+
+    <div class="message" id="levelup">You Venture further...</div>
+
+    <script src="advent.js"></script>
+  </body>
+
+</html>
