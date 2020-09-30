@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Interval Timer</title>
+
+    <link rel="stylesheet" href="/style.css" />
+
+    <link rel="manifest" href="manifest.json" />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="/apple-icon-152x152.png"
+    />
+    <meta name="theme-color" content="#F4F5F6" />
+
+    <script src="/script.js" defer></script>
+  </head>
+  <body>
+    <!-- Interval body and timer -->
+    <div id="intervals">
+      <h1 id="timer">0:00</h1>
+      <div id="bar">
+        <h3 id="duration">
+          Duration: 00:00:00
+        </h3>
+        <h2 id="round">
+          0/0
+        </h2>
+        <h3 id="elapsed">
+          Elapsed: 00:00:00
+        </h3>
+      </div>
+      <div class="previews" id="current">
+        <h3>Current Interval</h3>
+        <h4 id="currentName"></h4>
+        <h4 id="currentTime"></h4>
+      </div>
+      <div class="previews" id="next">
+        <h3>Next Interval</h3>
+        <h4 id="nextName"></h4>
+        <h4 id="nextTime"></h4>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div id="buttons">
+      <button class="button" id="start" onclick="start()">
+        Start
+      </button>
+      <button class="button" id="stop" onclick="stop()">
+        Stop
+      </button>
+      <button class="button" id="create" onclick="toggleCreator()">
+        Add
+      </button>
+      <button class="button" id="clear" onclick="clearIntervals()">
+        Clear
+      </button>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="hidden" onclick="toggleCreator()"></div>
+    <div id="intervalCreator" class="hidden">
+      <!-- input boxes -->
+      <div id="warning" class="hidden">
+        You Forgot to enter something!
+      </div>
+      <h4>Name</h4>
+      <input type="text" id="name" /><br />
+      <h4>Duration (in Seconds)</h4>
+      <input type="number" id="time" /><br />
+      <button id="add" onclick="intervalAdder();">
+        Create Interval
+      </button>
+    </div>
+  </body>
+</html>
